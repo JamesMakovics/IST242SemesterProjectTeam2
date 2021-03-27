@@ -1,9 +1,11 @@
 package mainPackage;
 
-public class Main {
-	private mainMenuGui m = new mainMenuGui();
+public class covidMain{
+	private static mainMenuGui m = new mainMenuGui();
+
 	public static void main(String [] args) {
 
 		m.startGui();
 	}
+
 }
