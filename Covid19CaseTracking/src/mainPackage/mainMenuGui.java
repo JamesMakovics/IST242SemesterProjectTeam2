@@ -39,8 +39,8 @@ public class mainMenuGui {
 
         //Creating the panel at bottom and adding components
         JPanel bottomPanel = new JPanel(); // the panel is not visible in output
-        JLabel countryOneLabel = new JLabel("Enter country one here");
-        JLabel countryTwoLabel = new JLabel("Enter country two here");
+        JLabel countryOneLabel = new JLabel("Enter country one here:");
+        JLabel countryTwoLabel = new JLabel("Enter country two here:");
         JTextField countryOneTextFeild = new JTextField(10); // accepts 10 characters
         JTextField countryTwoTextFeild = new JTextField(10); // accepts 10 characters
         JButton compareButton = new JButton("Compare Countries Case Data");
