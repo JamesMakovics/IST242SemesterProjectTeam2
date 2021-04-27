@@ -1,28 +1,73 @@
 package mainPackage;
 
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+/*Name: James Makovics
+ * Date: 4/26/2021
+ * Professor: Professor Middaugh
+ */
+import java.io.*;
+import java.sql.*;
+import java.util.*;
 
-public class GetDataFromDatabase {
-	Connection connection;
-}
+public class getDataFromDatabase{ 
+	int NumberofCases;
+	int Recovery;
+	int Deathes;
+	int Vaccinations;
+	
+	public void getCountry(String countryName1)
+throws SQLException, ClassNotFoundException {
+
+String countryName = countryName1;	
+
+// Load the JDBC driver
+Class.forName("com.mysql.jdbc.Driver");
+System.out.println("Driver loaded");
+
+// Establish a connection
+Connection connection = DriverManager.getConnection
+("jdbc:mysql://localhost/mydb","root","");
+//("jdbc:mysql://localhost/DATABASE","USERNAME","PASSWORD");
+System.out.println("Database connected");
+// Create a statement
+Statement statement = connection.createStatement();
+
+// Execute a statement
 
 
-public GetDataFromDatabase() throws SQLException, ClassNotFoundException{
-	// Load the JDBC driver
-	Class.forName("com.mysql.jdbc.Driver");
-	System.out.println("Driver loaded");
-	// Establish a connection
-	connection = DriverManager.getConnection("jdbc:mysql://localhost/test", "root", "SBA2018");
-	System.out.println("Database connected");
-}
-
-public void closeConnection() throws SQLException
+ResultSet resultSet = statement.executeQuery
+("select * from Countries where  = " + countryName );
+// Iterate through the result and print the student names
+while (resultSet.next())
 {
-	// Close the connection
-	connection.close();		
+	//This next line is showing columns in my table, here we have 6 column
+   NumberofCases = resultSet.getInt(2);
+   Recovery = resultSet.getInt(3);
+   Deathes = resultSet.getInt(4);
+   Vaccinations = resultSet.getInt(5);
+   
+   //return (NumberofCases, Recovery, Deathes, Vaccinations);
+   
+}
+// Close the connection
+connection.close();
+
+
+}
+
+public int getNumberofCases(){
+	return NumberofCases;
+}
+
+public int getRecovery() {
+	return Recovery;
+}
+
+public int getDeathes () {
+	return Deathes;
+}
+
+public int getVaccinations() {
+	return Vaccinations;
+}
+
 }
